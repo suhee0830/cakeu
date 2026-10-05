@@ -102,15 +102,15 @@ const { error } = await supabase.from("messages").insert({
   };
 
   return (
-    <main
-      className="min-h-[100dvh] px-5"
-      style={{
-        backgroundImage: "url('/background.svg')",
-        backgroundSize: "auto 100%",
-backgroundPosition: "center top",
-        backgroundRepeat: "no-repeat",
-      }}
-    >
+    <main className="relative min-h-[100dvh] overflow-hidden px-5">
+  <div
+    className="pointer-events-none fixed inset-0 -z-10 bg-no-repeat"
+    style={{
+      backgroundImage: "url('/background.svg')",
+      backgroundSize: "auto 100%",
+      backgroundPosition: "center top",
+    }}
+  />
       <div className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col">
         <header className="pt-8 pb-5 text-center">
           <p className="text-[22px] font-semibold tracking-[-0.04em] text-[#FCFE71]">
