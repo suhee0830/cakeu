@@ -108,7 +108,7 @@ const { error } = await supabase.from("messages").insert({
     style={{
       backgroundImage: "url('/background.svg')",
       backgroundSize: "cover",
-      backgroundPosition: "center top",
+      backgroundPosition: "center -10px",
     }}
   />
       <div className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col">
