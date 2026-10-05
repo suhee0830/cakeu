@@ -106,8 +106,8 @@ const { error } = await supabase.from("messages").insert({
       className="min-h-screen px-5"
       style={{
         backgroundImage: "url('/background.svg')",
-        backgroundSize: "cover",
-        backgroundPosition: "center -20px",
+        backgroundSize: "auto 100%",
+backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",
       }}
     >
