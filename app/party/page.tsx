@@ -24,38 +24,55 @@ export default function PartyPage() {
 
   return (
     <main
-      className="min-h-screen bg-cover bg-center bg-no-repeat px-6"
+      className="min-h-screen px-6"
       style={{
-        backgroundImage: "url('/background.png')",
+        backgroundImage: "url('/background.svg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center -50px",
+        backgroundRepeat: "no-repeat",
       }}
     >
       <div className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col items-center justify-center">
         <div className="flex w-full flex-col items-center">
-          <img
-            src="/cake.svg"
-            alt="CAKE:U 케이크"
-            className="mb-10 w-[220px] object-contain"
-          />
+        <div
+  className="mb-10 h-[155px] w-[155px] translate-y-16 bg-contain bg-center bg-no-repeat"
+  style={{ backgroundImage: "url('/cake.svg')" }}
+  aria-label="CAKE:U 케이크"
+/>
 
-          <h1 className="text-center text-[26px] font-semibold tracking-[-0.04em] text-[#2F2927]">
+          <h1 className="text-center text-[18px] font-semibold tracking-[-0.04em] text-[#2F2927] translate-y-10">
             CAKE:U에 오신 걸 환영해요!
           </h1>
 
-          <p className="mt-3 text-center text-[16px] leading-7 text-[#817772]">
+          <p className="mt-3 translate-y-8 text-center text-[16px] leading-7 text-[#817772]">
             어떤 이름으로 함께할까요?
           </p>
 
-          <input
-            type="text"
-            value={nickname}
-            onChange={handleNicknameChange}
-            placeholder="이름을 입력해주세요"
-            className="mt-8 h-14 w-full rounded-2xl border border-[#E8DDD7] bg-white px-5 text-[16px] text-[#2F2927] outline-none placeholder:text-[#B8AAA3] focus:border-[#E8B7B7]"
-          />
+          <div className="mt-8 flex translate-y-6 items-center justify-center gap-3">
+            <img
+              src="/input-left.svg"
+              alt=""
+              className="h-5 w-5 object-contain"
+            />
+
+            <input
+              type="text"
+              value={nickname}
+              onChange={handleNicknameChange}
+              placeholder="이름을 입력해주세요"
+              className="h-10 w-[240px] rounded-full border border-[#FF68FF] bg-white px-5 text-[16px] text-black outline-none placeholder:text-[#B8AAA3] focus:border-[#FF68FF]"
+            />
+
+            <img
+              src="/input-right.svg"
+              alt=""
+              className="h-5 w-5 object-contain"
+            />
+          </div>
 
           <a
             href="/party/chat"
-            className="mt-3 flex h-14 w-full items-center justify-center rounded-2xl bg-[#E8B7B7] text-[16px] font-medium text-white"
+            className="mt-3 translate-y-8 flex h-10 w-[130px] items-center justify-center rounded-full bg-[#28FFFF] text-[15px] font-medium text-black"
           >
             참여하기
           </a>
