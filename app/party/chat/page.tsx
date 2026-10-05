@@ -107,7 +107,7 @@ const { error } = await supabase.from("messages").insert({
     className="pointer-events-none fixed inset-0 -z-10 bg-no-repeat"
     style={{
       backgroundImage: "url('/background.svg')",
-      backgroundSize: "auto 100%",
+      backgroundSize: "cover",
       backgroundPosition: "center top",
     }}
   />
