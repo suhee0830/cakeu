@@ -1,3 +1,4 @@
+```tsx
 "use client";
 
 import { useEffect, useState } from "react";
@@ -23,11 +24,16 @@ export default function PartyPage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#FFF9F5] px-6">
+    <main
+      className="min-h-screen bg-cover bg-center bg-no-repeat px-6"
+      style={{
+        backgroundImage: "url('/background.png')",
+      }}
+    >
       <div className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col items-center justify-center">
         <div className="flex w-full flex-col items-center">
           <img
-            src="/cake.png"
+            src="/cake.svg"
             alt="CAKE:U 케이크"
             className="mb-10 w-[220px] object-contain"
           />
@@ -59,3 +65,4 @@ export default function PartyPage() {
     </main>
   );
 }
+```
