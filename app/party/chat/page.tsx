@@ -1,6 +1,8 @@
+```tsx
 "use client";
 
 import { useEffect, useState } from "react";
+
 import { supabase } from "../../../lib/supabase";
 
 type Message = {
@@ -174,14 +176,13 @@ export default function PartyChatPage() {
                 className="h-12 min-w-0 flex-1 rounded-2xl border border-[#E8DDD7] bg-white px-4 text-[15px] text-[#2F2927] outline-none placeholder:text-[#B8AAA3] focus:border-[#E8B7B7]"
               />
 
-<button
-  type="button"
-  onClick={() => alert("버튼 작동")}
-  disabled={sending}
-  className="flex h-12 shrink-0 items-center justify-center rounded-2xl bg-[#E8B7B7] px-5 text-[15px] font-medium text-white disabled:opacity-50"
->
-  보내기
-</button>
+              <button
+                type="submit"
+                disabled={sending}
+                className="flex h-12 shrink-0 items-center justify-center rounded-2xl bg-[#E8B7B7] px-5 text-[15px] font-medium text-white disabled:opacity-50"
+              >
+                {sending ? "전송 중" : "보내기"}
+              </button>
             </form>
           </div>
         </div>
@@ -189,3 +190,4 @@ export default function PartyChatPage() {
     </main>
   );
 }
+```
