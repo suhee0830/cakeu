@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -75,7 +76,7 @@ export default function PartyChatPage() {
 
   const handleSend = async () => {
     const trimmedText = text.trim();
-    const trimmedNickname = nickname.trim();
+    const trimmedNickname = nickname.trim() || "익명";
 
     if (!trimmedText || !trimmedNickname || sending) {
       return;
@@ -83,10 +84,12 @@ export default function PartyChatPage() {
 
     setSending(true);
 
-    const { error } = await supabase.from("messages").insert({
-      name: trimmedNickname,
-      text: trimmedText,
-    });
+
+
+const { error } = await supabase.from("messages").insert({
+  name: trimmedNickname,
+  text: trimmedText,
+});
 
     if (error) {
       console.error("메시지 전송 실패:", error);
@@ -98,24 +101,25 @@ export default function PartyChatPage() {
     setSending(false);
   };
 
-  const handleSubmit = async (
-    event: React.FormEvent<HTMLFormElement>
-  ) => {
-    event.preventDefault();
-    await handleSend();
-  };
-
   return (
-    <main className="min-h-screen bg-[#FFF9F5] px-5">
+    <main
+      className="min-h-screen px-5"
+      style={{
+        backgroundImage: "url('/background.svg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center -20px",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="mx-auto flex min-h-screen w-full max-w-[430px] flex-col">
-        <header className="pt-8 pb-5">
-          <h1 className="text-[26px] font-semibold tracking-[-0.04em] text-[#2F2927]">
+        <header className="pt-8 pb-5 text-center">
+          <p className="text-[22px] font-semibold tracking-[-0.04em] text-[#FCFE71]">
+            CAKE:U
+          </p>
+
+          <h1 className="mt-1 text-[20px] font-semibold tracking-[-0.04em] text-white">
             오늘의 축하 한 조각
           </h1>
-
-          <p className="mt-2 text-[15px] leading-6 text-[#817772]">
-            지금, 전하고 싶은 마음을 남겨주세요.
-          </p>
         </header>
 
         <section className="flex-1 pb-28">
@@ -138,13 +142,12 @@ export default function PartyChatPage() {
                     </span>
 
                     <span className="text-[11px] text-[#B8AAA3]">
-                      {new Date(message.created_at).toLocaleTimeString(
-                        "ko-KR",
-                        {
-                          hour: "2-digit",
-                          minute: "2-digit",
-                        }
-                      )}
+                      {new Date(
+                        message.created_at
+                      ).toLocaleTimeString("ko-KR", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
                     </span>
                   </div>
 
@@ -161,10 +164,7 @@ export default function PartyChatPage() {
 
         <div className="fixed bottom-0 left-0 right-0 bg-[#FFF9F5]/95 px-5 pb-5 pt-3 backdrop-blur-sm">
           <div className="mx-auto w-full max-w-[430px]">
-            <form
-              onSubmit={handleSubmit}
-              className="flex w-full items-center gap-2"
-            >
+          <div className="flex w-full items-center gap-2">
               <input
                 type="text"
                 value={text}
@@ -174,17 +174,18 @@ export default function PartyChatPage() {
                 className="h-12 min-w-0 flex-1 rounded-2xl border border-[#E8DDD7] bg-white px-4 text-[15px] text-[#2F2927] outline-none placeholder:text-[#B8AAA3] focus:border-[#E8B7B7]"
               />
 
-              <button
-                type="submit"
-                disabled={sending}
+<button
+  type="button"
+  onClick={handleSend}
                 className="flex h-12 shrink-0 items-center justify-center rounded-2xl bg-[#E8B7B7] px-5 text-[15px] font-medium text-white disabled:opacity-50"
               >
                 {sending ? "전송 중" : "보내기"}
               </button>
-            </form>
+              </div>
           </div>
         </div>
       </div>
     </main>
   );
 }
+
